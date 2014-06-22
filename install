@@ -1,0 +1,12 @@
+#!/bin/bash
+
+DOTFILES_ROOT="`pwd`"
+
+ln -sf "$DOTFILES_ROOT/src/.vimrc" ~/.vimrc
+ln -sf "$DOTFILES_ROOT/src/.vim" ~/.vim
+
+ln -sf "$DOTFILES_ROOT/src/.bashrc" ~/.bashrc
+ln -sf "$DOTFILES_ROOT/src/.bash_profile" ~/.bash_profile
+ln -sf "$DOTFILES_ROOT/src/.bash" ~/.bash
+
+ln -sf "$DOTFILES_ROOT/src/.gitconfig" ~/.gitconfig
