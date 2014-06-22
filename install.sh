@@ -1,10 +1,10 @@
 #!/bin/bash
 
-ln -sf ./src/.vimrc ~/.vimrc
-ln -sf ./src/.vim ~/.vim
+ln -sf ~/dotfiles/src/.vimrc ~/.vimrc
+ln -sf ~/dotfiles/src/.vim ~/.vim
 
-ln -sf ./src/.bashrc ~/.bashrc
-ln -sf ./src/.bash_profile ~/.bash_profile
-ln -sf ./src/.bash ~/.bash
+ln -sf ~/dotfiles/src/.bashrc ~/.bashrc
+ln -sf ~/dotfiles/src/.bash_profile ~/.bash_profile
+ln -sf ~/dotfiles/src/.bash ~/.bash
 
-ln -sf ./src/.gitconfig ~/.gitconfig
+ln -sf ~/dotfiles/src/.gitconfig ~/.gitconfig
