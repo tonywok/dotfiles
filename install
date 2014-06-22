@@ -2,11 +2,23 @@
 
 DOTFILES_ROOT="`pwd`"
 
+# vim
+#
 ln -sf "$DOTFILES_ROOT/src/.vimrc" ~/.vimrc
+if [ ! -d ~/.vim ]; then
+  rm -r ~/.vim
+fi
 ln -sf "$DOTFILES_ROOT/src/.vim" ~/.vim
 
+# bash
+#
 ln -sf "$DOTFILES_ROOT/src/.bashrc" ~/.bashrc
 ln -sf "$DOTFILES_ROOT/src/.bash_profile" ~/.bash_profile
+if [ ! -d ~/.bash ]; then
+  rm -r ~/.bash
+fi
 ln -sf "$DOTFILES_ROOT/src/.bash" ~/.bash
 
+# git
+#
 ln -sf "$DOTFILES_ROOT/src/.gitconfig" ~/.gitconfig
