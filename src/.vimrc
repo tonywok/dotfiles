@@ -9,9 +9,6 @@
  " required!
   filetype off
 
-" required for several plugins
-  set nocompatible
-
 " enable syntax highlighting
   syntax on
 
@@ -129,50 +126,52 @@
 " BEGIN VUNDLE
 "
 
-set rtp+=~/.vim/bundle/Vundle.vim
+
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
-Plugin 'gmarik/vundle'
-Plugin 'git://github.com/tpope/vim-git.git'
-Plugin 'git://github.com/tpope/vim-endwise.git'
-Plugin 'git://github.com/tpope/vim-fugitive.git'
-Plugin 'git://github.com/tpope/vim-haml.git'
-Plugin 'git://github.com/pangloss/vim-javascript.git'
-Plugin 'git://github.com/ervandew/supertab.git'
-Plugin 'git://github.com/tomtom/tcomment_vim.git'
-Plugin 'git://github.com/tsaleh/vim-matchit.git'
-Plugin 'git://github.com/tpope/vim-repeat.git'
-Plugin 'git://github.com/vim-scripts/ruby-matchit.git'
-Plugin 'git://github.com/altercation/vim-colors-solarized.git'
+" Vundle is self aware
+Plugin 'gmarik/Vundle.vim'
 
-colorscheme solarized
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-haml'
+Plugin 'pangloss/vim-javascript'
+Plugin 'ervandew/supertab'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'tsaleh/vim-matchit'
+Plugin 'tpope/vim-repeat'
+Plugin 'vim-scripts/ruby-matchit'
 
 "
 " BEGIN FILE TYPES
 "
 
 " Go
-Plugin "git://github.com/jnwhiteh/vim-golang.git"
+Plugin "jnwhiteh/vim-golang"
 au BufNewFile,BufRead *.go set filetype=go
 
 " Slim
-Plugin "git://github.com/slim-template/vim-slim.git"
+Plugin "slim-template/vim-slim"
 au BufNewFile,BufRead *.slim set filetype=slim
 
 " Less
-Plugin "git://github.com/groenewege/vim-less.git"
+Plugin "groenewege/vim-less"
 au BufNewFile,BufRead *.less set filetype=less
 
 " Handlebars
-Plugin "git://github.com/nono/vim-handlebars.git"
+Plugin "nono/vim-handlebars"
 au BufNewFile,BufRead *.hbs set filetype=handlebars
 
 " Coffee script
-Plugin "git://github.com/kchmck/vim-coffee-script.git"
+Plugin "kchmck/vim-coffee-script"
 au BufNewFile,BufRead *.coffee set filetype=coffee
 
 " Markdown
-Plugin "git://github.com/tpope/vim-markdown.git"
+Plugin "tpope/vim-markdown"
   augroup mkd
     autocmd BufNewFile,BufRead *.mkd      set ai formatoptions=tcroqn2 comments=n:> filetype=markdown
     autocmd BufNewFile,BufRead *.md       set ai formatoptions=tcroqn2 comments=n:> filetype=markdown
@@ -185,7 +184,7 @@ Plugin "git://github.com/tpope/vim-markdown.git"
 "
 
 " AG aka The Silver Searcher
-Plugin 'git://github.com/rking/ag.vim.git'
+Plugin 'rking/ag.vim'
   nmap g/ :Ag!<space>
   nmap g* :Ag! -w <C-R><C-W><space>
   nmap ga :AgAdd!<space>
@@ -195,26 +194,26 @@ Plugin 'git://github.com/rking/ag.vim.git'
   nmap gl :cwindow<CR>
 
 " navigation by tags using CTags
-Plugin "git://github.com/majutsushi/tagbar.git"
+Plugin "majutsushi/tagbar"
   let g:tagbar_autofocus = 1
   map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
   map <Leader>. :TagbarToggle<CR>	
 
 " Markdown preview to quickly preview markdown files
-Plugin "git://github.com/maba/vim-markdown-preview.git"
+Plugin "maba/vim-markdown-preview"
   map <buffer> <Leader>mp :Mm<CR>
 
 " NERDTree for project drawer
-Plugin "git://github.com/scrooloose/nerdtree.git"
+Plugin "scrooloose/nerdtree"
   let NERDTreeHijackNetrw = 0
   nmap gt :NERDTreeToggle<CR>
 
 " gundo for awesome undo tree visualization
-Plugin "git://github.com/sjl/gundo.vim.git"
+Plugin "sjl/gundo.vim"
   map <Leader>h :GundoToggle<CR>
 
 " rails.vim
-Plugin "git://github.com/tpope/vim-rails.git"
+Plugin "tpope/vim-rails"
   map <Leader>oc :Rcontroller<Space>
   map <Leader>ov :Rview<Space>
   map <Leader>om :Rmodel<Space>
@@ -224,13 +223,16 @@ Plugin "git://github.com/tpope/vim-rails.git"
   map <Leader>oi :Rintegration<Space>
 
 " surround for adding surround 'physics'
-Plugin "git://github.com/tpope/vim-surround.git"
+Plugin "pope/vim-surround"
   " # to surround with ruby string interpolation
   let g:surround_35 = "#{\r}"
   " - to surround with no-output erb tag
   let g:surround_45 = "<% \r %>"
   " = to surround with output erb tag
   let g:surround_61 = "<%= \r %>"
+
+call vundle#end()
+filetype plugin indent on
 
 
 "
