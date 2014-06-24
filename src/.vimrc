@@ -129,21 +129,21 @@
 " BEGIN VUNDLE
 "
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
-Bundle 'git://github.com/tpope/vim-git.git'
-Bundle 'git://github.com/tpope/vim-endwise.git'
-Bundle 'git://github.com/tpope/vim-fugitive.git'
-Bundle 'git://github.com/tpope/vim-haml.git'
-Bundle 'git://github.com/pangloss/vim-javascript.git'
-Bundle 'git://github.com/ervandew/supertab.git'
-Bundle 'git://github.com/tomtom/tcomment_vim.git'
-Bundle 'git://github.com/tsaleh/vim-matchit.git'
-Bundle 'git://github.com/tpope/vim-repeat.git'
-Bundle 'git://github.com/vim-scripts/ruby-matchit.git'
-Bundle 'git://github.com/altercation/vim-colors-solarized.git'
+Plugin 'gmarik/vundle'
+Plugin 'git://github.com/tpope/vim-git.git'
+Plugin 'git://github.com/tpope/vim-endwise.git'
+Plugin 'git://github.com/tpope/vim-fugitive.git'
+Plugin 'git://github.com/tpope/vim-haml.git'
+Plugin 'git://github.com/pangloss/vim-javascript.git'
+Plugin 'git://github.com/ervandew/supertab.git'
+Plugin 'git://github.com/tomtom/tcomment_vim.git'
+Plugin 'git://github.com/tsaleh/vim-matchit.git'
+Plugin 'git://github.com/tpope/vim-repeat.git'
+Plugin 'git://github.com/vim-scripts/ruby-matchit.git'
+Plugin 'git://github.com/altercation/vim-colors-solarized.git'
 
 colorscheme solarized
 
@@ -152,27 +152,27 @@ colorscheme solarized
 "
 
 " Go
-Bundle "git://github.com/jnwhiteh/vim-golang.git"
+Plugin "git://github.com/jnwhiteh/vim-golang.git"
 au BufNewFile,BufRead *.go set filetype=go
 
 " Slim
-Bundle "git://github.com/slim-template/vim-slim.git"
+Plugin "git://github.com/slim-template/vim-slim.git"
 au BufNewFile,BufRead *.slim set filetype=slim
 
 " Less
-Bundle "git://github.com/groenewege/vim-less.git"
+Plugin "git://github.com/groenewege/vim-less.git"
 au BufNewFile,BufRead *.less set filetype=less
 
 " Handlebars
-Bundle "git://github.com/nono/vim-handlebars.git"
+Plugin "git://github.com/nono/vim-handlebars.git"
 au BufNewFile,BufRead *.hbs set filetype=handlebars
 
 " Coffee script
-Bundle "git://github.com/kchmck/vim-coffee-script.git"
+Plugin "git://github.com/kchmck/vim-coffee-script.git"
 au BufNewFile,BufRead *.coffee set filetype=coffee
 
 " Markdown
-Bundle "git://github.com/tpope/vim-markdown.git"
+Plugin "git://github.com/tpope/vim-markdown.git"
   augroup mkd
     autocmd BufNewFile,BufRead *.mkd      set ai formatoptions=tcroqn2 comments=n:> filetype=markdown
     autocmd BufNewFile,BufRead *.md       set ai formatoptions=tcroqn2 comments=n:> filetype=markdown
@@ -185,7 +185,7 @@ Bundle "git://github.com/tpope/vim-markdown.git"
 "
 
 " AG aka The Silver Searcher
-Bundle 'git://github.com/rking/ag.vim.git'
+Plugin 'git://github.com/rking/ag.vim.git'
   nmap g/ :Ag!<space>
   nmap g* :Ag! -w <C-R><C-W><space>
   nmap ga :AgAdd!<space>
@@ -195,26 +195,26 @@ Bundle 'git://github.com/rking/ag.vim.git'
   nmap gl :cwindow<CR>
 
 " navigation by tags using CTags
-Bundle "git://github.com/majutsushi/tagbar.git"
+Plugin "git://github.com/majutsushi/tagbar.git"
   let g:tagbar_autofocus = 1
   map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
   map <Leader>. :TagbarToggle<CR>	
 
 " Markdown preview to quickly preview markdown files
-Bundle "git://github.com/maba/vim-markdown-preview.git"
+Plugin "git://github.com/maba/vim-markdown-preview.git"
   map <buffer> <Leader>mp :Mm<CR>
 
 " NERDTree for project drawer
-Bundle "git://github.com/scrooloose/nerdtree.git"
+Plugin "git://github.com/scrooloose/nerdtree.git"
   let NERDTreeHijackNetrw = 0
   nmap gt :NERDTreeToggle<CR>
 
 " gundo for awesome undo tree visualization
-Bundle "git://github.com/sjl/gundo.vim.git"
+Plugin "git://github.com/sjl/gundo.vim.git"
   map <Leader>h :GundoToggle<CR>
 
 " rails.vim
-Bundle "git://github.com/tpope/vim-rails.git"
+Plugin "git://github.com/tpope/vim-rails.git"
   map <Leader>oc :Rcontroller<Space>
   map <Leader>ov :Rview<Space>
   map <Leader>om :Rmodel<Space>
@@ -224,7 +224,7 @@ Bundle "git://github.com/tpope/vim-rails.git"
   map <Leader>oi :Rintegration<Space>
 
 " surround for adding surround 'physics'
-Bundle "git://github.com/tpope/vim-surround.git"
+Plugin "git://github.com/tpope/vim-surround.git"
   " # to surround with ruby string interpolation
   let g:surround_35 = "#{\r}"
   " - to surround with no-output erb tag
