@@ -5,7 +5,10 @@ DOTFILES_ROOT="`pwd`"
 # vim
 #
 ln -sf "$DOTFILES_ROOT/src/.vimrc" ~/.vimrc
-if [ -d ~/.vim ]; then rm -r ~/.vim; fi
+if [ -d ~/.vim ]; then
+  rm -r ~/.vim
+  mkdir -p ~/.vim/bundle
+fi
 ln -sf "$DOTFILES_ROOT/src/.vim" ~/.vim
 
 # bash
