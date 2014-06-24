@@ -5,17 +5,14 @@ DOTFILES_ROOT="`pwd`"
 # vim
 #
 ln -sf "$DOTFILES_ROOT/src/.vimrc" ~/.vimrc
-if [ -d ~/.vim ]; then
-  rm -r ~/.vim
-  mkdir -p ~/.vim/bundle
-fi
 ln -sf "$DOTFILES_ROOT/src/.vim" ~/.vim
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +BundleInstall +qall
 
 # bash
 #
 ln -sf "$DOTFILES_ROOT/src/.bashrc" ~/.bashrc
 ln -sf "$DOTFILES_ROOT/src/.bash_profile" ~/.bash_profile
-if [ -d ~/.bash ]; then rm -r ~/.bash; fi
 ln -sf "$DOTFILES_ROOT/src/.bash" ~/.bash
 
 # git
