@@ -28,7 +28,7 @@
 
 [core]
   legacyheaders = false
-  excludesfile  = /Users/tonywok/.gitignore
+  excludesfile  = /opt/boxen/config/git/gitignore
   autocrlf = input
   safecrlf = true
 
@@ -59,3 +59,9 @@
 
 [init]
   templatedir = ~/.git_template
+
+[hub]
+protocol = https
+
+[credential]
+helper = /opt/boxen/bin/boxen-git-credential
