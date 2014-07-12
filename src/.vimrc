@@ -1,21 +1,51 @@
 "
-" GENERAL CONFIG
+" VUNDLE CONFIG
 "
 
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 
-" required!
-  filetype plugin indent on
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-haml'
+Plugin 'pangloss/vim-javascript'
+Plugin 'ervandew/supertab'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'tpope/vim-repeat'
+Plugin 'vim-scripts/ruby-matchit'
+Plugin 'rking/ag.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'maba/vim-markdown-preview'
+Plugin 'scrooloose/nerdtree'
+Plugin 'sjl/gundo.vim'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-surround'
+Plugin 'jnwhiteh/vim-golang'
+Plugin 'slim-template/vim-slim'
+Plugin 'groenewege/vim-less'
+Plugin 'nono/vim-handlebars'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-markdown'
+Plugin 'kien/ctrlp.vim'
 
- " required!
-  filetype off
+call vundle#end()
+filetype plugin indent on
+
+
+"
+" GENERAL CONFIG
+"
 
 " enable syntax highlighting
   syntax on
 
 " default color scheme
-  syntax enable
   set background=dark
-  set guifont=Menlo\ Regular:h16
 
 " don't wrap long lines
   set nowrap
@@ -59,9 +89,6 @@
 
 " match indentation of previous line
   set autoindent
-
-" perform autoindenting based on filetype plugin
-  filetype plugin indent on
 
 " don't blink the cursor
   set guicursor=a:blinkon0
@@ -111,80 +138,31 @@
 " remember last position in file
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
 
-" Thorfile, Rakefile, Vagrantfile, and Gemfile are Ruby
-  au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
-
-" hb/hbs is handlebars
-  au BufNewFile,BufRead *.hb set ai filetype=handlebars
-  au BufNewFile,BufRead *.hbs set ai filetype=handlebars
-
-" JSON is JS
-  au BufNewFile,BufRead *.json set ai filetype=javascript
-
 
 "
-" BEGIN VUNDLE
+" FILE TYPE RECOGNITION
 "
 
-
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
-
-" Vundle is self aware
-Plugin 'gmarik/Vundle.vim'
-
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-haml'
-Plugin 'pangloss/vim-javascript'
-Plugin 'ervandew/supertab'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'tsaleh/vim-matchit'
-Plugin 'tpope/vim-repeat'
-Plugin 'vim-scripts/ruby-matchit'
-
-"
-" BEGIN FILE TYPES
-"
-
-" Go
-Plugin "jnwhiteh/vim-golang"
+au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
+au BufNewFile,BufRead *.hb set ai filetype=handlebars
+au BufNewFile,BufRead *.hbs set ai filetype=handlebars
+au BufNewFile,BufRead *.json set ai filetype=javascript
 au BufNewFile,BufRead *.go set filetype=go
-
-" Slim
-Plugin "slim-template/vim-slim"
 au BufNewFile,BufRead *.slim set filetype=slim
-
-" Less
-Plugin "groenewege/vim-less"
 au BufNewFile,BufRead *.less set filetype=less
-
-" Handlebars
-Plugin "nono/vim-handlebars"
-au BufNewFile,BufRead *.hbs set filetype=handlebars
-
-" Coffee script
-Plugin "kchmck/vim-coffee-script"
 au BufNewFile,BufRead *.coffee set filetype=coffee
-
-" Markdown
-Plugin "tpope/vim-markdown"
-  augroup mkd
-    autocmd BufNewFile,BufRead *.mkd      set ai formatoptions=tcroqn2 comments=n:> filetype=markdown
-    autocmd BufNewFile,BufRead *.md       set ai formatoptions=tcroqn2 comments=n:> filetype=markdown
-    autocmd BufNewFile,BufRead *.markdown set ai formatoptions=tcroqn2 comments=n:> filetype=markdown
-  augroup END
+augroup mkd
+  autocmd BufNewFile,BufRead *.mkd      set ai formatoptions=tcroqn2 comments=n:> filetype=markdown
+  autocmd BufNewFile,BufRead *.md       set ai formatoptions=tcroqn2 comments=n:> filetype=markdown
+  autocmd BufNewFile,BufRead *.markdown set ai formatoptions=tcroqn2 comments=n:> filetype=markdown
+augroup END
 
 
 "
-" BEGIN PLUGINS WITH MAPPINGS
+" PLUGINS WITH MAPPINGS
 "
 
-" AG aka The Silver Searcher
-Plugin 'rking/ag.vim'
+" Silver Searcher
   nmap g/ :Ag!<space>
   nmap g* :Ag! -w <C-R><C-W><space>
   nmap ga :AgAdd!<space>
@@ -193,27 +171,22 @@ Plugin 'rking/ag.vim'
   nmap gq :ccl<CR>
   nmap gl :cwindow<CR>
 
-" navigation by tags using CTags
-Plugin "majutsushi/tagbar"
+" Tagbar
   let g:tagbar_autofocus = 1
   map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
-  map <Leader>. :TagbarToggle<CR>	
+  map <Leader>. :TagbarToggle<CR>
 
-" Markdown preview to quickly preview markdown files
-Plugin "maba/vim-markdown-preview"
+" Markdown preview
   map <buffer> <Leader>mp :Mm<CR>
 
-" NERDTree for project drawer
-Plugin "scrooloose/nerdtree"
+" NERDTree
   let NERDTreeHijackNetrw = 0
   nmap gt :NERDTreeToggle<CR>
 
-" gundo for awesome undo tree visualization
-Plugin "sjl/gundo.vim"
+" Gundo
   map <Leader>h :GundoToggle<CR>
 
-" rails.vim
-Plugin "tpope/vim-rails"
+" Rails vim
   map <Leader>oc :Rcontroller<Space>
   map <Leader>ov :Rview<Space>
   map <Leader>om :Rmodel<Space>
@@ -222,8 +195,7 @@ Plugin "tpope/vim-rails"
   map <Leader>os :Rstylesheet<Space>
   map <Leader>oi :Rintegration<Space>
 
-" surround for adding surround 'physics'
-Plugin "pope/vim-surround"
+" Surround
   " # to surround with ruby string interpolation
   let g:surround_35 = "#{\r}"
   " - to surround with no-output erb tag
@@ -231,9 +203,23 @@ Plugin "pope/vim-surround"
   " = to surround with output erb tag
   let g:surround_61 = "<%= \r %>"
 
-call vundle#end()
-filetype plugin indent on
+" Ctrl-P Fuzzy finder
+  nnoremap <Leader>b :<C-U>CtrlPBuffer<CR>
+  nnoremap <Leader>t :<C-U>CtrlP<CR>
+  nnoremap <Leader>T :<C-U>CtrlPTag<CR>
+  let g:ctrlp_prompt_mappings = {
+    \ 'PrtSelectMove("j")':   ['<down>'],
+    \ 'PrtSelectMove("k")':   ['<up>'],
+    \ 'AcceptSelection("h")': ['<c-j>'],
+    \ 'AcceptSelection("v")': ['<c-k>', '<RightMouse>'],
+    \ }
+  " respect the .gitignore
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
 
+
+"
+" KEY MAPPINGS
+"
 
 "
 " KEY MAPPINGS
