@@ -32,6 +32,8 @@ Plugin 'nono/vim-handlebars'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-markdown'
 Plugin 'kien/ctrlp.vim'
+Plugin 'rust-lang/rust.vim'
+Plugin 'scrooloose/syntastic'
 
 call vundle#end()
 filetype plugin indent on
@@ -45,7 +47,7 @@ filetype plugin indent on
   syntax on
 
 " default color scheme
-  set background=dark
+  set background=light
 
 " don't wrap long lines
   set nowrap
@@ -151,6 +153,9 @@ au BufNewFile,BufRead *.go set filetype=go
 au BufNewFile,BufRead *.slim set filetype=slim
 au BufNewFile,BufRead *.less set filetype=less
 au BufNewFile,BufRead *.coffee set filetype=coffee
+au BufNewFile,BufRead *.ex set filetype=elixir
+au BufNewFile,BufRead *.exs set filetype=elixir
+au BufNewFile,BufRead *.rs set filetype=rust
 augroup mkd
   autocmd BufNewFile,BufRead *.mkd      set ai formatoptions=tcroqn2 comments=n:> filetype=markdown
   autocmd BufNewFile,BufRead *.md       set ai formatoptions=tcroqn2 comments=n:> filetype=markdown
@@ -216,6 +221,19 @@ augroup END
   " respect the .gitignore
   let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
 
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_ruby_checkers = ["mri", "rubocop", "rubylint"]
+let g:syntastic_javascript_jshint_exec = "~/node_modules/jshint/bin/jshint"
+let g:syntastic_javascript_checkers = ["jshint"]
 
 "
 " KEY MAPPINGS

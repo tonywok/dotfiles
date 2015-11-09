@@ -1,46 +1,9 @@
-if [ -f `brew --prefix`/etc/bash_completion.d/git-prompt.sh ]; then
-  . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
-fi
+source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
 
-GREEN="\033[0;32m"
-CYAN="\033[0;36m"
-BLUE="\033[0;34m"
-RED="\033[0;31m"
-RESET="\033[0m"
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWSTASHSTATE=1
+export GIT_PS1_SHOWUPSTREAM="auto"
+export GIT_PS1_SHOWCOLORHINTS=1
 
-function git-prompt {
-
-  local prompt=""
-
-  if [[ -d "./.git" ]]; then
-
-    prompt="$prompt$(__git_ps1 '(%s)')"
-
-    if test -n "$(git status --porcelain)"; then
-      local status="$(git status --porcelain | cut -c 1-2 | uniq)"
-
-      if [[ $status =~ (A )|(D )|(R )|(M ) ]]; then # staged
-        prompt="$prompt$CYAN ✔"
-      fi
-
-      if [[ $status =~ ( M) ]]; then # modified
-        prompt="$prompt$GREEN ●"
-      fi
-
-      if [[ $status =~ (\?\?) ]]; then # untracked
-        prompt="$prompt$BLUE ●"
-      fi
-
-      if [[ $status =~ (U )|( U) ]]; then # conflict
-        prompt="$prompt$RED x"
-      fi
-
-    else
-      prompt="$prompt ✔"
-    fi
-  fi
-
-  echo -e "$prompt"
-}
-
-export PS1="${CYAN}\u@\h: ${RESET}\W ${GREEN}\$(git-prompt) ${RESET} \n→ "
+PROMPT_COMMAND='__git_ps1 "\W" " \\\$ "'
