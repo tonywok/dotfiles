@@ -52,6 +52,7 @@
   put  = "push origin HEAD"
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   visual = !gitx
+	dad = !curl https://icanhazdadjoke.com/ && git add
 
 [push]
   default = simple

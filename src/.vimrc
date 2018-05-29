@@ -34,6 +34,17 @@ Plugin 'tpope/vim-markdown'
 Plugin 'kien/ctrlp.vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/syntastic'
+Plugin 'ngmy/vim-rubocop'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'slashmili/alchemist.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" TypeScript
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Quramy/tsuquyomi'
 
 call vundle#end()
 filetype plugin indent on
@@ -48,6 +59,10 @@ filetype plugin indent on
 
 " default color scheme
   set background=light
+  colorscheme solarized
+
+" font settings
+  set guifont=Menlo\ Regular:h16
 
 " don't wrap long lines
   set nowrap
@@ -166,6 +181,15 @@ augroup END
 "
 " PLUGINS WITH MAPPINGS
 "
+
+" tsuquyomi (typescript)
+  let g:tsuquyomi_disable_quickfix = 1
+  let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
+
+" Rubocop
+  let g:syntastic_ruby_checkers = ["mri", "rubocop", "rubylint"]
+  let g:vimrubocop_keymap = 0
+  nmap <Leader>rg :RuboCop<CR>
 
 " Silver Searcher
   nmap g/ :Ag!<space>
